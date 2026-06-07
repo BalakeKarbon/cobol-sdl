@@ -20,11 +20,6 @@ If we take the following C source and build it with `emcc src/c_sdl.c -o build/w
 #include <emscripten.h>
 #endif
 
-void start_app() {
-    printf("Starting app\n");
-    main();
-}
-
 int main(int argc, char** argv) {
   printf("Hello, world!\n");
 
@@ -59,6 +54,12 @@ int main(int argc, char** argv) {
 
   return 0;
 }
+
+// Modification
+int start_app(int argc, char** argv) {
+    printf("Starting app\n");
+    return main(argc, argv);
+}
 ```
 
 ### The host HTML file demonstrating custom entry point:
@@ -84,3 +85,4 @@ var Module = {
 </body>
 </html>
 ```
+
